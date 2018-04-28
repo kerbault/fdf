@@ -5,53 +5,110 @@
 #                                                  +:+:+   +:    +:  +:+:+     #
 #    By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
-#    Created: 2017/11/16 07:56:05 by aberneli     #+#   ##    ##    #+#        #
-#    Updated: 2018/02/06 16:56:29 by kerbault    ###    #+. /#+    ###.fr      #
+#    Created: 2017/11/22 21:55:44 by kerbault     #+#   ##    ##    #+#        #
+#    Updated: 2018/04/25 23:38:53 by kerbault    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
-.PHONY: all clean fclean re normy
+SHELL		:= /bin/bash
 
-NAME = fdf
+#### Start of system configuration section ####
 
-SRCS =
+NAME		:= fdf
+CC			:= gcc
+CFLAGS		:= -Wall -Wextra -Werror
+AR			:= ar
+ARFLAGS		:= rcs
+MKDIR		:= mkdir
+MKDIRFLAGS	:= -p
+RM			:= /bin/rm
+RMFLAGS		:= -rf
+ECHO		:= echo -e
+QUIET		:= @
+NORM		:= norminette
+GREEN		:= \033[0;32m
+NC			:= \033[0m
 
-OBJS = $(SRCS:.c=.o)
+#### Libraries def section ####
 
-FLAGS = -Wall -Wextra -Werror
+LIBFTDIR	:= libft
+MLXDIR		:= minilibx_macos
+EXT_LIBS	:=	-framework OpenGl -framework AppKit
+LIBS		:=	\
+	$(MLXDIR)/libmlx.a \
+	$(LIBFTDIR)/libft.a \
+	$(EXT_LIBS)
 
-INC = -I minilibx_macos -I libft
+#### Start of files definition section ####
 
-HEADERS =
+INCLUDESDIR	:= inc
+INCLUDES 	:= \
+	-I $(INCLUDESDIR)/ \
+	-I $(LIBFTDIR)/$(INCLUDESDIR) \
+	-I $(MLXDIR)
+SRCDIR		:=	src
+SRCS		:=	fdf.c
+OBJDIR		:=	obj
+OBJS		:=	$(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 
-LIBS = minilibx_macos/libmlx.a libft/libft.a
+#### Start of rules section ####
 
-EXT_LIBS = -framework OpenGl -framework AppKit
+.PHONY: all clean fclean re norm
 
 all: $(NAME)
 
-$(NAME): $(LIBS) $(OBJS)
-	gcc $(FLAGS) $(LIBS) $(EXT_LIBS) $(OBJS) -o $(NAME)
+$(NAME): $(LIBFTDIR)/libft.a $(MLXDIR)/libmlx.a $(OBJDIR) $(OBJS)
+	$(QUIET)$(ECHO) "Creating the executable"
+	$(QUIET)$(CC) $(CCFLAGS) $(LIBS) $(OBJS) -o $@
+	$(QUIET)$(ECHO) "Done"
 
-$(LIBS):
-	make -C ./libft
-	make -C ./minilibx_macos
+$(OBJDIR):
+	$(QUIET)$(MKDIR) $(MKDIRFLAGS) $(OBJDIR)
 
-./%.o: ./%.c $(HEADERS)
-	gcc $(FLAGS) $(INC) -o $@ -c $<
+$(LIBFTDIR)/libft.a:
+	$(QUIET)$(ECHO) "Creating the lib"
+	$(QUIET)$(MAKE) -C $(LIBFTDIR)
+	$(QUIET)$(ECHO) "Compilation lib"
+	
+$(MLXDIR)/libmlx.a:
+	$(QUIET)$(ECHO) "Creating the mlx"
+	$(QUIET)$(MAKE) -C $(MLXDIR)
+	$(QUIET)$(ECHO) "Compilation mlx"
+	
+$(OBJDIR)/%.o: $(SRCDIR)/%.c $(INCLUDESDIR)/$(NAME).h
+	$(QUIET)$(ECHO) "Compiling $<"
+	$(QUIET)$(CC) $(CFLAGS) -I $(INCLUDESDIR) -c $< -o $@
+
+ifeq ($(shell $(MAKE) --question -C ./$(LIBFTDIR) ; echo $$?), 1)
+.PHONY: $(LIBFTDIR)/$(LIBFTDIR).a
+endif
+ifeq ($(shell $(MAKE) --question -C ./$(MLXDIR) ; echo $$?), 1)
+.PHONY: $(MLXDIR)/libmlx.a
+endif
 
 clean:
-	rm -f $(OBJS)
+	$(QUIET)$(ECHO) "Cleaning the objects"
+	$(QUIET)$(RM) $(RMFLAGS) $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	$(QUIET)$(ECHO) "Deleting the library"
+	$(QUIET)$(MAKE) -C $(LIBFTDIR) fclean
+	$(QUIET)$(MAKE) -C $(MLXDIR) clean
+	$(QUIET)$(RM) $(RMFLAGS) $(NAME) $(OBJDIR)
 
 re: fclean all
-	make -C ./libft re
-	make -C ./minilibx_macos re
 
-re2: fclean all
+norm:
+	$(QUIET)$(ECHO) "${GREEN}Checking norm 101${NC}"
+	$(QUIET)$(NORM) $(SRCDIR)/$(SRC) $(INCLUDESDIR)/*.h
 
-normy:
-	norminette $(SRCS) $(HEADERS)
+gpush: fclean
+	$(QUIET) git add *
+	$(QUIET) git commit -m "quick push"
+	$(QUIET) git push
+
+test: fclean norm all
+	$(QUIET)$(ECHO) "${GREEN}Testing${NC}"
+	$(QUIET) ./ft_printftest
+	$(QUIET)$(RM) $(RMFLAGS) $(NAME)	
