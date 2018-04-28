@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/24 13:15:38 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/28 17:16:57 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/28 17:54:20 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,7 +47,7 @@
 ** Struct definition
 */
 
-typedef struct		s_line
+typedef struct		s_point
 {
 	int		x1;
 	int		y1;
@@ -55,8 +55,6 @@ typedef struct		s_line
 	int		y2;
 	int		dx;
 	int		dy;
-	void	*mlxptr;
-	void	*win_ptr;
-}					t_line;
+}					t_point;
 
 #endif
