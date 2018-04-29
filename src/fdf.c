@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/24 14:41:15 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/29 08:02:24 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/29 08:49:37 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -263,53 +263,61 @@ int main(int argc, char **argv)
 	mlx_ptr = mlx_init();
 	win_ptr = mlx_new_window(mlx_ptr, size, size, "test");
 
-	// point.x1 = 0 + 100;
-	// point.y1 = 0 + 100;
-	// point.x2 = 50 + 100;
-	// point.y2 = 100 + 100;
-	// draw_seg(point, mlx_ptr, win_ptr); // BB 1
+	point.x1 = 0 + 100;
+	point.y1 = 0 + 100;
+	point.x2 = 100 + 100;
+	point.y2 = 20 + 100;
+	mlx_pixel_put(mlx_ptr, win_ptr, 100+100, 20+100, 0xFF0000);
+	draw_seg(point, mlx_ptr, win_ptr); // BB 1
 
-	// point.x1 = 0 + 100;
-	// point.y1 = 0 + 100;
-	// point.x2 = 100 + 100;
-	// point.y2 = 50 + 100;
-	// draw_seg(point, mlx_ptr, win_ptr); // BB 2
+	point.x1 = 100 + 100;
+	point.y1 = 20 + 100;
+	point.x2 = 200 + 100;
+	point.y2 = 40 + 100;
+	draw_seg(point, mlx_ptr, win_ptr); // BB 2
+	mlx_pixel_put(mlx_ptr, win_ptr, 100+100, 20+100, 0xFF0000);
 
-	// point.x1 = 0 + 100;
-	// point.y1 = 0 + 100;
-	// point.x2 = 100 + 100;
-	// point.y2 = -50 + 100;
-	// draw_seg(point, mlx_ptr, win_ptr); // DD 3
+	point.x1 = 0 + 100;
+	point.y1 = 0 + 100;
+	point.x2 = 100 + 100;
+	point.y2 = -50 + 100;
+	mlx_pixel_put(mlx_ptr, win_ptr, 100+100, -50+100, 0xFF0000);
+	draw_seg(point, mlx_ptr, win_ptr); // DD 3
 
-	// point.x1 = 0 + 100;
-	// point.y1 = 0 + 100;
-	// point.x2 = 50 + 100;
-	// point.y2 = -100 + 100;
-	// draw_seg(point, mlx_ptr, win_ptr); // DD 4
+	point.x1 = 0 + 100;
+	point.y1 = 0 + 100;
+	point.x2 = 50 + 100;
+	point.y2 = -100 + 100;
+	mlx_pixel_put(mlx_ptr, win_ptr, 50+100, -100+100, 0xFF0000);
+	draw_seg(point, mlx_ptr, win_ptr); // DD 4
 
-	// point.x1 = 0 + 100;
-	// point.y1 = 0 + 100;
-	// point.x2 = -50 + 100;
-	// point.y2 = -100 + 100;
-	// draw_seg(point, mlx_ptr, win_ptr); // HH 5
+	point.x1 = 0 + 100;
+	point.y1 = 0 + 100;
+	point.x2 = -50 + 100;
+	point.y2 = -100 + 100;
+	mlx_pixel_put(mlx_ptr, win_ptr, -50+100, -100+100, 0xFF0000);
+	draw_seg(point, mlx_ptr, win_ptr); // HH 5
 
-	// point.x1 = 0 + 100;
-	// point.y1 = 0 + 100;
-	// point.x2 = -100 + 100;
-	// point.y2 = -50 + 100;
-	// draw_seg(point, mlx_ptr, win_ptr); // HH 6
+	point.x1 = 0 + 100;
+	point.y1 = 0 + 100;
+	point.x2 = -100 + 100;
+	point.y2 = -50 + 100;
+	mlx_pixel_put(mlx_ptr, win_ptr, -100+100, -50+100, 0xFF0000);
+	draw_seg(point, mlx_ptr, win_ptr); // HH 6
 
-	// point.x1 = 0 + 100;
-	// point.y1 = 0 + 100;
-	// point.x2 = -100 + 100;
-	// point.y2 = 50 + 100;
-	// draw_seg(point, mlx_ptr, win_ptr); // GG 7
+	point.x1 = 0 + 100;
+	point.y1 = 0 + 100;
+	point.x2 = -100 + 100;
+	point.y2 = 50 + 100;
+	mlx_pixel_put(mlx_ptr, win_ptr, -100+100, 50+100, 0xFF0000);
+	draw_seg(point, mlx_ptr, win_ptr); // GG 7
 
-	// point.x1 = 0 + 100;
-	// point.y1 = 0 + 100;
-	// point.x2 = -50 + 100;
-	// point.y2 = 100 + 100;
-	// draw_seg(point, mlx_ptr, win_ptr); // GG 8
+	point.x1 = 0 + 100;
+	point.y1 = 0 + 100;
+	point.x2 = -50 + 100;
+	point.y2 = 100 + 100;
+	mlx_pixel_put(mlx_ptr, win_ptr, -50+100, 100+100, 0xFF0000);
+	draw_seg(point, mlx_ptr, win_ptr); // GG 8
 
 	// point.x1 = 0+ 100;
 	// point.y1 = 0+ 100;
