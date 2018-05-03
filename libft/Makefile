@@ -6,7 +6,7 @@
 #    By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/04/24 13:57:39 by kerbault     #+#   ##    ##    #+#        #
-#    Updated: 2018/04/24 19:19:56 by kerbault    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/05/03 17:57:04 by kerbault    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -101,7 +101,8 @@ SRCS		:= \
 	ft_memdel.c \
 	ft_putstr_fd.c \
 	ft_strequ.c \
-	ft_strnew.c 
+	ft_strnew.c \
+	get_next_line.c
 	
 OBJDIR		:= obj
 OBJS		:= $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))

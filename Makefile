@@ -6,7 +6,7 @@
 #    By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/11/22 21:55:44 by kerbault     #+#   ##    ##    #+#        #
-#    Updated: 2018/04/25 23:38:53 by kerbault    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/05/03 17:10:28 by kerbault    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -48,7 +48,8 @@ INCLUDES 	:= \
 	-I $(LIBFTDIR)/$(INCLUDESDIR) \
 	-I $(MLXDIR)
 SRCDIR		:=	src
-SRCS		:=	fdf.c
+SRCS		:=	fdf.c\
+				main.c
 OBJDIR		:=	obj
 OBJS		:=	$(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 

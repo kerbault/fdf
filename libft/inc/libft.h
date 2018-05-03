@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/22 20:45:12 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/24 19:32:33 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/03 17:51:54 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,14 +20,19 @@
 ** string.h for the macro NULL and the typedef size_t
 ** unistd.h for the function write
 */
+# include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
 # include <wchar.h>
 
+# define BUFF_SIZE 32
 # define NULL_CHECK(x) if (x == NULL) return (NULL)
 # define VOID_NULL_CHECK(x) if (x == NULL) return
 # define MALLOC_CHECK(x) if (x == NULL) return (NULL)
+# define NULL_CHECK1(x) if (x == NULL) return (-1)
+# define MALLOC_CHECK1(x) if (x == NULL) return (-1)
+# define MALLOC_CHECK2(x) if (x == NULL) return (NULL)
 
 /*
 ** Struct for a linked list
@@ -41,6 +46,16 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct		s_gnl
+{
+	int				fd;
+	char			*str;
+	unsigned int	size;
+	unsigned int	nb;
+	char			*endl;
+	struct s_gnl	*next;
+}					t_gnl;
 
 /*
 ** Typedef for the memory related functions
@@ -133,5 +148,6 @@ size_t				ft_putwchar_fd(wchar_t wc, const int fd);
 size_t				ft_putwchar(wchar_t wc);
 void				ft_putwstr_fd(wchar_t *s, const int fd);
 void				ft_putwstr(wchar_t *s);
+int					get_next_line(const int fd, char **line);
 
 #endif
