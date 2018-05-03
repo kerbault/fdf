@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 15:51:29 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/03 19:26:54 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/03 23:09:08 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -144,7 +144,7 @@ int main(int ac, char **av)
 	void	*win;
 	int		fd;
 	int		**map;
-	t_s_map	s_map;
+	t_map	s_map;
 
 	if (ac != 2)
 	{

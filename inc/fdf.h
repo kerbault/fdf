@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/24 13:15:38 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/03 17:18:23 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/03 23:18:20 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -57,17 +57,22 @@ typedef struct	s_point
 	int dy;
 }				t_point;
 
-typedef struct	s_s_map
+typedef struct	s_map
 {
 	int length;
 	int width;
-}				t_s_map;
+}				t_map;
+
+typedef struct	s_img
+{
+	
+}				t_map;
 
 /*
 ** Function definition
 */
 
-int		**read_map(int fd, t_s_map s_map);
+int		**read_map(int fd, t_map s_map);
 int		draw_seg(t_point point, void *mlx_ptr, void *win_ptr);
 
 #endif
