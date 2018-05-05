@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/24 14:41:15 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/05 16:56:20 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/05 20:53:00 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,13 +28,14 @@ void	draw_seg2(t_point point, void *mlx_ptr, void *win_ptr)
 	while (1)
 	{
 		mlx_pixel_put(mlx_ptr, win_ptr, point.x1, point.y1, 0xFFFFFF);
-		if ((point.x1 += 1) == point.x2)
+		if (point.x1 == point.x2)
 			break ;
 		if ((e -= point.dy) < 0)
 		{
 			point.y1 += 1;
 			e += point.dx;
 		}
+		point.x1++;
 	}
 }
 
@@ -48,13 +49,14 @@ void	draw_seg3(t_point point, void *mlx_ptr, void *win_ptr)
 	while (1)
 	{
 		mlx_pixel_put(mlx_ptr, win_ptr, point.x1, point.y1, 0xFFFFFF);
-		if ((point.y1 += 1) == point.y2)
+		if ((point.y1) == point.y2)
 			break ;
 		if ((e -= point.dx) < 0)
 		{
 			point.x1 += 1;
 			e += point.dy;
 		}
+		point.y1++;
 	}
 }
 
@@ -68,13 +70,14 @@ void	draw_hd(t_point point, void *mlx_ptr, void *win_ptr)
 	while (1)
 	{
 		mlx_pixel_put(mlx_ptr, win_ptr, point.x1, point.y1, 0xFFFFFF);
-		if ((point.x1 += 1) == point.x2)
+		if (point.x1 == point.x2)
 			break ;
 		if ((e += point.dy) < 0)
 		{
 			point.y1 -= 1;
 			e += point.dx;
 		}
+		point.x1++;
 	}
 }
 
@@ -88,13 +91,14 @@ void	draw_seg5(t_point point, void *mlx_ptr, void *win_ptr)
 	while (1)
 	{
 		mlx_pixel_put(mlx_ptr, win_ptr, point.x1, point.y1, 0xFFFFFF);
-		if ((point.y1 -= 1) == point.y2)
+		if (point.y1 == point.y2)
 			break ;
 		if ((e += point.dx) > 0)
 		{
 			point.x1 += 1;
 			e += point.dy;
 		}
+		point.y1--;
 	}
 }
 
@@ -108,13 +112,14 @@ void	draw_seg6(t_point point, void *mlx_ptr, void *win_ptr)
 	while (1)
 	{
 		mlx_pixel_put(mlx_ptr, win_ptr, point.x1, point.y1, 0xFFFFFF);
-		if ((point.x1 -= 1) == point.x2)
+		if ((point.x1 += 1) == point.x2)
 			break ;
 		if ((e += point.dy) >= 0)
 		{
 			point.y1 += 1;
 			e += point.dx;
 		}
+		point.x1--;
 	}
 }
 
@@ -128,13 +133,14 @@ void	draw_seg7(t_point point, void *mlx_ptr, void *win_ptr)
 	while (1)
 	{
 		mlx_pixel_put(mlx_ptr, win_ptr, point.x1, point.y1, 0xFFFFFF);
-		if ((point.y1 += 1) == point.y2)
+		if (point.y1 == point.y2)
 			break ;
 		if ((e += point.dx) <= 0)
 		{
 			point.x1 -= 1;
 			e += point.dy;
 		}
+		point.y1++;
 	}
 }
 
@@ -148,13 +154,14 @@ void	draw_hg1(t_point point, void *mlx_ptr, void *win_ptr)
 	while (1)
 	{
 		mlx_pixel_put(mlx_ptr, win_ptr, point.x1, point.y1, 0xFFFFFF);
-		if ((point.x1 -= 1) == point.x2)
+		if (point.x1 == point.x2)
 			break ;
 		if ((e -= point.dy) >= 0)
 		{
 			point.y1 -= 1;
 			e += point.dx;
 		}
+		point.x1++;
 	}
 }
 
@@ -168,13 +175,14 @@ void	draw_hg2(t_point point, void *mlx_ptr, void *win_ptr)
 	while (1)
 	{
 		mlx_pixel_put(mlx_ptr, win_ptr, point.x1, point.y1, 0xFFFFFF);
-		if ((point.y1 -= 1) == point.y2)
+		if (point.y1 == point.y2)
 			break ;
 		if ((e -= point.dx) >= 0)
 		{
 			point.x1 -= 1;
 			e += point.dy;
 		}
+		point.y1--;
 	}
 }
 
@@ -195,7 +203,7 @@ int		dx_sup(t_point point, void *mlx_ptr, void *win_ptr)
 			draw_seg5(point, mlx_ptr, win_ptr);
 	}
 	else
-		while (point.x1 + 1 != point.x2)
+		while (point.x1 != point.x2)
 		{
 			mlx_pixel_put(mlx_ptr, win_ptr, point.x1, point.y1, 0xFFFFFF);
 			point.x1 += 1;
@@ -220,7 +228,7 @@ int		dx_inf(t_point point, void *mlx_ptr, void *win_ptr)
 			draw_hg2(point, mlx_ptr, win_ptr);
 	}
 	else
-		while (point.x1 - 1 != point.x2)
+		while (point.x1 != point.x2)
 		{
 			mlx_pixel_put(mlx_ptr, win_ptr, point.x1, point.y1, 0xFFFFFF);
 			point.x1 -= 1;
