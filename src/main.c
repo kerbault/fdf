@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 15:51:29 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/03 23:09:08 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/05 17:05:12 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,9 +24,9 @@ int		kf(int keycode, void *param)
 	return (0);
 }
 
-t_s_map	size_map(int fd)
+t_map	size_map(int fd)
 {
-	t_s_map	s_map;
+	t_map	s_map;
 	char	*line;
 	char	**length;
 
@@ -45,7 +45,7 @@ t_s_map	size_map(int fd)
 	return (s_map);
 }
 
-int		**map_malloc(t_s_map s_map, t_s_map size)
+int		**map_malloc(t_map s_map, t_map size)
 {
 	int		**map;
 	int		*map2;
@@ -61,12 +61,12 @@ int		**map_malloc(t_s_map s_map, t_s_map size)
 	return (map);
 }
 
-int		**read_map(int fd, t_s_map s_map)
+int		**read_map(int fd, t_map s_map)
 {
 	char	*line;
 	char	**map_part;
 	int		**map;
-	t_s_map	size;
+	t_map	size;
 
 	ft_bzero(&size, sizeof(size));
 	size.length = 0;
@@ -87,7 +87,7 @@ int		**read_map(int fd, t_s_map s_map)
 	return (map);
 }
 
-t_point	set_point1(int x, int y, t_s_map s_map, int **map)
+t_point	set_point1(int x, int y, t_map s_map, int **map)
 {
 	t_point	p;
 
@@ -98,7 +98,7 @@ t_point	set_point1(int x, int y, t_s_map s_map, int **map)
 	return (p);
 }
 
-t_point set_point2(int x, int y, t_s_map s_map, int **map)
+t_point set_point2(int x, int y, t_map s_map, int **map)
 {
 	t_point	p;
 
@@ -109,7 +109,7 @@ t_point set_point2(int x, int y, t_s_map s_map, int **map)
 	return (p);
 }
 
-void	print_map(void *mlx, void *win, int **map, t_s_map s_map)
+void	print_map(void *mlx, void *win, int **map, t_map s_map)
 {
 	int		x;
 	int		y;
@@ -157,9 +157,8 @@ int main(int ac, char **av)
 	map = read_map(fd, s_map);
 	close(fd);
 	mlx = mlx_init();
-	win = mlx_new_window(mlx, s_map.length * 25, s_map.width * 40, av[1]);
+	win = mlx_new_window(mlx, 1920, 1200, av[1]);
 	print_map(mlx, win, map, s_map);
-	mlx_pixel_put(mlx, win, 1, 1, 0xFFFFFF);
 	mlx_key_hook(win, kf, 0);
 	free(map);
 	mlx_loop(mlx);

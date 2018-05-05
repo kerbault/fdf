@@ -6,12 +6,17 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/24 14:41:15 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/03 18:56:10 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/05 16:56:20 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
+
+// void	fill_pixel(char *my_image_string, int x, int y, int color)
+// {
+	
+// }
 
 void	draw_seg2(t_point point, void *mlx_ptr, void *win_ptr)
 {

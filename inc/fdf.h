@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/24 13:15:38 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/03 23:18:20 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/05 17:45:52 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,8 +40,8 @@
 # define CCLOCK		92
 # define CENTER		87
 # define ZOOMIN		69
-# define ZOOMOUT		78
-# define ESC			53
+# define ZOOMOUT	78
+# define ESC		53
 
 /*
 ** Struct definition
@@ -49,24 +49,24 @@
 
 typedef struct	s_point
 {
-	int x1;
-	int y1;
-	int x2;
-	int y2;
-	int dx;
-	int dy;
+	int		x1;
+	int		y1;
+	int		x2;
+	int		y2;
+	int		dx;
+	int		dy;
 }				t_point;
 
 typedef struct	s_map
 {
-	int length;
-	int width;
+	int		length;
+	int		width;
 }				t_map;
 
 typedef struct	s_img
 {
-	
-}				t_map;
+	char	*pt_img;
+}				t_img;
 
 /*
 ** Function definition
