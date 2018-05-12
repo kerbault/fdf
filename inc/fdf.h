@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/24 13:15:38 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/05 18:53:00 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/12 16:42:58 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,23 +49,23 @@
 
 typedef struct	s_point
 {
-	int		x1;
-	int		y1;
-	int		x2;
-	int		y2;
-	int		dx;
-	int		dy;
+	int x1;
+	int y1;
+	int x2;
+	int y2;
+	int dx;
+	int dy;
 }				t_point;
 
 typedef struct	s_map
 {
-	int		length;
-	int		width;
+	int length;
+	int width;
 }				t_map;
 
 typedef struct	s_img
 {
-	char	*pt_img;
+	char *pt_img;
 }				t_img;
 
 /*
@@ -74,5 +74,11 @@ typedef struct	s_img
 
 int		**read_map(int fd, t_map s_map);
 int		draw_seg(t_point point, void *mlx_ptr, void *win_ptr);
+t_point	set_cav1(int x, int y, int **map, size_t i);
+t_point	set_cav2(int x, int y, int **map, size_t i);
+t_point set_point1(int x, int y, t_map s_map, int **map);
+t_point set_point2(int x, int y, t_map s_map, int **map);
+void	ft_close(char *msg, int status);
+int		kf(int keycode, void *param);
 
 #endif
