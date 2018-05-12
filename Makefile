@@ -6,7 +6,7 @@
 #    By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/11/22 21:55:44 by kerbault     #+#   ##    ##    #+#        #
-#    Updated: 2018/05/12 16:43:14 by kerbault    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/05/12 16:49:51 by kerbault    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -47,14 +47,14 @@ INCLUDES 	:= \
 	-I $(INCLUDESDIR)/ \
 	-I $(LIBFTDIR)/$(INCLUDESDIR) \
 	-I $(MLXDIR)
-
 SRCDIR		:=	src
 SRCS		:=	\
 	fdf.c\
 	main.c\
 	cav.c\
 	iso.c\
-	keymap.c
+	keymap.c\
+	map_read.c
 OBJDIR		:=	obj
 OBJS		:=	$(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 

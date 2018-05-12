@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/24 13:15:38 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/12 16:42:58 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/12 16:50:38 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -80,5 +80,9 @@ t_point set_point1(int x, int y, t_map s_map, int **map);
 t_point set_point2(int x, int y, t_map s_map, int **map);
 void	ft_close(char *msg, int status);
 int		kf(int keycode, void *param);
+t_map	size_map(int fd);
+int		**map_malloc(t_map s_map, t_map size);
+int		**read_map(int fd, t_map s_map);
+
 
 #endif
