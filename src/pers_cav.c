@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   cav.c                                            .::    .:/ .      .::   */
+/*   pers_cav.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/12 15:40:37 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/12 18:27:46 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/12 22:58:57 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-t_point	set_cav1(int x, int y, int **map, size_t i)
+t_point	pers_cav1(int x, int y, int **map, size_t i)
 {
 	t_point	pt;
 	int		decal;
@@ -28,7 +28,7 @@ t_point	set_cav1(int x, int y, int **map, size_t i)
 	return (pt);
 }
 
-t_point	set_cav2(int x, int y, int **map, size_t i)
+t_point	pers_cav2(int x, int y, int **map, size_t i)
 {
 	t_point	pt;
 	int		decal;

@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/24 13:15:38 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/12 18:49:19 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/12 23:28:12 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,8 +44,25 @@
 # define ESC		53
 
 /*
+** const definition
+*/
+
+# define W_WIDTH 1920
+# define W_HEIGHT 1080
+# define WHITE 0xFFFFFF
+# define BLACK 0x00000
+
+/*
 ** Struct definition
 */
+
+typedef struct	s_main
+{
+	void	*mlx;
+	void	*win;
+	int		fd;
+	int		**map;
+}				t_main;
 
 typedef struct	s_point
 {
@@ -61,25 +78,25 @@ typedef struct	s_point
 
 typedef struct	s_map
 {
-	int length;
-	int width;
-}				t_map;
+	int		length;
+	int		width;
+	int		*fig;
+	int		bpp;
+	int		sl;
+	int		endian;
+	void	*ptr;
 
-typedef struct	s_img
-{
-	char *pt_img;
-}				t_img;
+}				t_map;
 
 /*
 ** Function definition
 */
 
 int		**read_map(int fd, t_map s_map);
-int		draw_seg(t_point point, void *mlx_ptr, void *win_ptr);
-t_point	set_cav1(int x, int y, int **map, size_t i);
-t_point	set_cav2(int x, int y, int **map, size_t i);
-t_point set_point1(int x, int y, t_map s_map, int **map);
-t_point set_point2(int x, int y, t_map s_map, int **map);
+t_point	pers_cav1(int x, int y, int **map, size_t i);
+t_point	pers_cav2(int x, int y, int **map, size_t i);
+t_point pers_point1(int x, int y, t_map s_map, int **map);
+t_point pers_point2(int x, int y, t_map s_map, int **map);
 void	ft_close(char *msg, int status);
 int		kf(int keycode, void *param);
 t_map	size_map(int fd);

@@ -6,7 +6,7 @@
 #    By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/11/22 21:55:44 by kerbault     #+#   ##    ##    #+#        #
-#    Updated: 2018/05/12 18:50:04 by kerbault    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/05/12 22:58:56 by kerbault    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -49,10 +49,9 @@ INCLUDES 	:= \
 	-I $(MLXDIR)
 SRCDIR		:=	src
 SRCS		:=	\
-	fdf.c\
 	main.c\
-	cav.c\
-	iso.c\
+	pers_cav.c\
+	pers_iso.c\
 	keymap.c\
 	drawseg.c\
 	map_read.c
