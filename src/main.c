@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 15:51:29 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/12 16:48:29 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/12 19:06:37 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,9 +29,9 @@ void	print_map(void *mlx, void *win, int **map, t_map s_map)
 		while (x++ < s_map.length - 1)
 		{
 			if (x != s_map.length - 1)
-				draw_seg(set_cav1(x, y, map, i), mlx, win);
+				drawseg(set_cav1(x, y, map, i), mlx, win);
 			if (y != s_map.width - 1)
-				draw_seg(set_cav2(x, y, map, i), mlx, win);
+				drawseg(set_cav2(x, y, map, i), mlx, win);
 		}
 		i += 10;
 		x = -1;

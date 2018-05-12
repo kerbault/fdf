@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/24 13:15:38 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/12 16:50:38 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/12 18:49:19 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -55,6 +55,8 @@ typedef struct	s_point
 	int y2;
 	int dx;
 	int dy;
+	int sx;
+	int sy;
 }				t_point;
 
 typedef struct	s_map
@@ -83,6 +85,6 @@ int		kf(int keycode, void *param);
 t_map	size_map(int fd);
 int		**map_malloc(t_map s_map, t_map size);
 int		**read_map(int fd, t_map s_map);
-
+void	drawseg(t_point pt, void *mlx_ptr, void *win_ptr);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/11/22 21:55:44 by kerbault     #+#   ##    ##    #+#        #
-#    Updated: 2018/05/12 16:49:51 by kerbault    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/05/12 18:50:04 by kerbault    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -54,6 +54,7 @@ SRCS		:=	\
 	cav.c\
 	iso.c\
 	keymap.c\
+	drawseg.c\
 	map_read.c
 OBJDIR		:=	obj
 OBJS		:=	$(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
