@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 15:51:29 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/12 23:35:43 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/12 23:57:36 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@ void	set_img(void *mlx, t_map s_map)
 		ft_close("error : mlx_get_data_addr()", EXIT_FAILURE);
 }
 
-void	print_map(void *mlx, void *win, int **map, t_map s_map)
+void	print_map(t_main main, t_map s_map)
 {
 	int		x;
 	int		y;
@@ -36,14 +36,37 @@ void	print_map(void *mlx, void *win, int **map, t_map s_map)
 		while (x++ < s_map.length - 1)
 		{
 			if (x != s_map.length - 1)
-				drawseg(pers_cav1(x, y, map, i), mlx, win);
+				drawseg(pers_cav1(x, y, main.map, i), main.mlx, main.win);
 			if (y != s_map.width - 1)
-				drawseg(pers_cav2(x, y, map, i), mlx, win);
+				drawseg(pers_cav2(x, y, main.map, i), main.mlx, main.win);
 		}
 		i += 10;
 		x = -1;
 	}
 }
+
+// void	print_map(void *mlx, void *win, int **map, t_map s_map)
+// {
+// 	int		x;
+// 	int		y;
+// 	size_t	i;
+
+// 	i = 0;
+// 	x = -1;
+// 	y = -1;
+// 	while (y++ < s_map.width - 1)
+// 	{
+// 		while (x++ < s_map.length - 1)
+// 		{
+// 			if (x != s_map.length - 1)
+// 				drawseg(pers_cav1(x, y, map, i), mlx, win);
+// 			if (y != s_map.width - 1)
+// 				drawseg(pers_cav2(x, y, map, i), mlx, win);
+// 		}
+// 		i += 10;
+// 		x = -1;
+// 	}
+// }
 
 int		main(int ac, char **av)
 {
@@ -59,7 +82,7 @@ int		main(int ac, char **av)
 	close(main.fd);
 	main.mlx = mlx_init();
 	main.win = mlx_new_window(main.mlx, W_WIDTH, W_HEIGHT, av[1]);
-	// print_map(main.mlx, main.win, main.map, s_map);
+	print_map(main, s_map);
 	set_img(main.mlx, s_map);
 	mlx_put_image_to_window(main.mlx, main.win, main.map, 20, 20);
 	mlx_hook(main.win, 2, 0, kf, 0);

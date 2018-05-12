@@ -6,12 +6,17 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/12 18:14:22 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/12 18:54:39 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/12 23:57:01 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
+
+void	put_pixel(void *mlx_ptr, void *win_ptr, t_point pt)
+{
+	
+}
 
 void	drawseg(t_point pt, void *mlx_ptr, void *win_ptr)
 {
@@ -25,7 +30,7 @@ void	drawseg(t_point pt, void *mlx_ptr, void *win_ptr)
 	err = (pt.dx > pt.dy ? pt.dx : -pt.dy) / 2;
 	while (1)
 	{
-		mlx_pixel_put(mlx_ptr, win_ptr, pt.x1, pt.y1, 0xFFFFFF);
+		put_pixel(mlx_ptr, win_ptr, pt);
 		if (pt.x1 == pt.x2 && pt.y1 == pt.y2)
 			break ;
 		e2 = err;

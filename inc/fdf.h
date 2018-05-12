@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/24 13:15:38 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/12 23:28:12 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/12 23:38:38 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -92,16 +92,16 @@ typedef struct	s_map
 ** Function definition
 */
 
-int		**read_map(int fd, t_map s_map);
-t_point	pers_cav1(int x, int y, int **map, size_t i);
-t_point	pers_cav2(int x, int y, int **map, size_t i);
-t_point pers_point1(int x, int y, t_map s_map, int **map);
-t_point pers_point2(int x, int y, t_map s_map, int **map);
-void	ft_close(char *msg, int status);
-int		kf(int keycode, void *param);
-t_map	size_map(int fd);
-int		**map_malloc(t_map s_map, t_map size);
-int		**read_map(int fd, t_map s_map);
-void	drawseg(t_point pt, void *mlx_ptr, void *win_ptr);
+int			**read_map(int fd, t_map s_map);
+t_point		pers_cav1(int x, int y, int **map, size_t i);
+t_point		pers_cav2(int x, int y, int **map, size_t i);
+t_point		pers_point1(int x, int y, t_map s_map, int **map);
+t_point		pers_point2(int x, int y, t_map s_map, int **map);
+void		ft_close(char *msg, int status);
+int			kf(int keycode, void *param);
+t_map		size_map(int fd);
+int			**map_malloc(t_map s_map, t_map size);
+int			**read_map(int fd, t_map s_map);
+void		drawseg(t_point pt, void *mlx_ptr, void *win_ptr);
 
 #endif
