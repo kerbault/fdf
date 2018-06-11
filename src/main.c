@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 15:51:29 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/11 21:19:58 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/11 23:24:44 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,16 +37,18 @@ void	set_img(void *mlx, t_map *s_map)
 		ft_close("error : mlx_get_data_addr()", EXIT_FAILURE);
 }
 
-void	opt_def(t_opt *opt)
+void	opt_def(t_opt *opt, t_size gsize)
 {
+	gsize.width = gsize.width;
 	opt->x_rat = 3;
 	opt->y_rat = 2;
-	opt->z_rat = 0.1;
-	opt->x_decal = 100;
-	opt->y_decal = 100;
+	opt->z_rat = 0.5;
+	opt->x_decal = W_X / 2;
+	opt->y_decal = W_Y / 2;
 	opt->tilt = 1;
-	opt->mult = 4;
-	opt->z_opt = 1;
+	opt->mult = 2;
+	opt->x_med = gsize.length * opt->mult;
+	opt->y_med = gsize.width * opt->mult;
 }
 
 int		main(int ac, char **av)
@@ -64,7 +66,7 @@ int		main(int ac, char **av)
 	main.fd = open(av[1], O_RDONLY);
 	main.map = read_map(main.fd);
 	close(main.fd);
-	opt_def(&opt);
+	opt_def(&opt, gsize);
 	main.mlx = mlx_init();
 	main.win = mlx_new_window(main.mlx, W_X, W_Y, av[1]);
 	set_img(main.mlx, s_map);

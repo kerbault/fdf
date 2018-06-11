@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/24 13:15:38 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/11 21:06:26 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/11 23:03:58 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -106,6 +106,8 @@ typedef struct	s_opt
 	double	tmp_tilt;
 	double	mult;
 	double	z_opt;
+	double	x_med;
+	double	y_med;
 }				t_opt;
 
 /*
