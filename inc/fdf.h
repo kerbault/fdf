@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/24 13:15:38 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/15 19:36:30 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/11 18:24:34 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,8 +47,8 @@
 ** const definition
 */
 
-# define W_WIDTH 2560
-# define W_HEIGHT 1440
+# define W_X 1600
+# define W_Y 900
 # define WHITE 0xFFFFFF
 # define BLACK 0x00000
 
@@ -89,19 +89,38 @@ typedef struct	s_map
 
 }				t_map;
 
+typedef struct	s_size
+{
+	int		length;
+	int		width;
+}				t_size;
+
+typedef struct	s_opt
+{
+	int		x_rat;
+	int		y_rat;
+	int		z_rat;
+	int		x_decal;
+	int		y_decal;
+	int		tilt;
+	int		tmp_tilt;
+	int		mult;
+	int		z_opt;
+}				t_opt;
+
 /*
 ** Function definition
 */
 
-t_point		pers_cav1(int x, int y, int **map, size_t i);
-t_point		pers_cav2(int x, int y, int **map, size_t i);
-t_point		pers_point1(int x, int y, int **map);
-t_point		pers_point2(int x, int y, int **map);
+t_point		pers_cav1(int x, int y, int **map, t_opt opt);
+t_point		pers_cav2(int x, int y, int **map, t_opt opt);
+t_point		set_point1(int x, int y, int **map);
+t_point		set_point2(int x, int y, int **map);
 void		ft_close(char *msg, int status);
 int			kf(int keycode, void *param);
-t_map		size_map(int fd);
+void		size_map(int fd, t_size *gsize);
 int			**map_malloc(t_map size);
 int			**read_map(int fd);
-void		drawseg(t_point pt, t_map s_map);
+void		set_map(t_main main, t_map *s_map, t_size gsize, t_opt	opt);
 
 #endif
