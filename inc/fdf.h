@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/24 13:15:38 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/11 18:24:34 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/11 21:06:26 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -97,15 +97,15 @@ typedef struct	s_size
 
 typedef struct	s_opt
 {
-	int		x_rat;
-	int		y_rat;
-	int		z_rat;
-	int		x_decal;
-	int		y_decal;
-	int		tilt;
-	int		tmp_tilt;
-	int		mult;
-	int		z_opt;
+	double	x_rat;
+	double	y_rat;
+	double	z_rat;
+	double	x_decal;
+	double	y_decal;
+	double	tilt;
+	double	tmp_tilt;
+	double	mult;
+	double	z_opt;
 }				t_opt;
 
 /*
