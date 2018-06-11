@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 15:51:29 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/11 21:01:47 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/11 21:19:58 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,7 +41,7 @@ void	opt_def(t_opt *opt)
 {
 	opt->x_rat = 3;
 	opt->y_rat = 2;
-	opt->z_rat = 1;
+	opt->z_rat = 0.1;
 	opt->x_decal = 100;
 	opt->y_decal = 100;
 	opt->tilt = 1;
