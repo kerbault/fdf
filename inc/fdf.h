@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/24 13:15:38 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/11 23:03:58 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/13 21:55:05 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -108,14 +108,18 @@ typedef struct	s_opt
 	double	z_opt;
 	double	x_med;
 	double	y_med;
+	double	t_med;
+	double	x_mult;
+	double	y_mult;
+	double	z_mult;
 }				t_opt;
 
 /*
 ** Function definition
 */
 
-t_point		pers_cav1(int x, int y, int **map, t_opt opt);
-t_point		pers_cav2(int x, int y, int **map, t_opt opt);
+t_point		pers_cav_ver(int x, int y, int **map, t_opt opt);
+t_point		pers_cav_hor(int x, int y, int **map, t_opt opt);
 t_point		set_point1(int x, int y, int **map);
 t_point		set_point2(int x, int y, int **map);
 void		ft_close(char *msg, int status);

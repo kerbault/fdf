@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 15:51:29 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/11 23:24:44 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/13 22:53:39 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,16 +39,31 @@ void	set_img(void *mlx, t_map *s_map)
 
 void	opt_def(t_opt *opt, t_size gsize)
 {
-	gsize.width = gsize.width;
+	double	i;
+	double	j;
+
+	i = 0;
+	j = 0;
 	opt->x_rat = 3;
 	opt->y_rat = 2;
 	opt->z_rat = 0.5;
 	opt->x_decal = W_X / 2;
 	opt->y_decal = W_Y / 2;
 	opt->tilt = 1;
-	opt->mult = 2;
-	opt->x_med = gsize.length * opt->mult;
-	opt->y_med = gsize.width * opt->mult;
+	opt->x_med = gsize.length - 1;
+	opt->y_med = gsize.width - 1;
+	if (opt->x_med == 0 || opt->y_med == 0)
+		ft_close("Invalid Map", -1);
+	opt->t_med = opt->tilt / opt->x_rat;
+	i = (W_Y - 50) / (opt->y_rat * opt->y_med);
+	j = (W_X - 50) / (opt->x_rat * (opt->x_med + (opt->y_med * opt->t_med)));
+	if (i > j)
+		opt->mult = j;
+	else
+		opt->mult = i;
+	opt->x_mult = opt->x_rat * opt->mult;
+	opt->y_mult = opt->y_rat * opt->mult;
+	opt->z_mult = opt->z_rat * opt->mult;
 }
 
 int		main(int ac, char **av)
@@ -64,9 +79,9 @@ int		main(int ac, char **av)
 	s_map = (t_map *)malloc(sizeof(t_map));
 	size_map(main.fd, &gsize);
 	main.fd = open(av[1], O_RDONLY);
+	opt_def(&opt, gsize);
 	main.map = read_map(main.fd);
 	close(main.fd);
-	opt_def(&opt, gsize);
 	main.mlx = mlx_init();
 	main.win = mlx_new_window(main.mlx, W_X, W_Y, av[1]);
 	set_img(main.mlx, s_map);

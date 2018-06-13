@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/12 18:14:22 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/11 22:42:30 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/13 16:21:48 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -69,9 +69,9 @@ void	set_map(t_main main, t_map *s_map, t_size gsize, t_opt opt)
 		while (x++ < gsize.length - 1)
 		{
 			if (x < W_X && (x + 1) < gsize.length)
-				set_seg(pers_cav1(x, y, main.map, opt), s_map);
+				set_seg(pers_cav_ver(x, y, main.map, opt), s_map);
 			if (y < W_Y && (y + 1) < gsize.width)
-				set_seg(pers_cav2(x, y, main.map, opt), s_map);
+				set_seg(pers_cav_hor(x, y, main.map, opt), s_map);
 		}
 		opt.tilt += opt.tmp_tilt;
 		x = -1;
