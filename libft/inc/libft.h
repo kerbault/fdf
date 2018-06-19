@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/22 20:45:12 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/03 17:51:54 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/19 22:00:38 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,7 +26,7 @@
 # include <string.h>
 # include <wchar.h>
 
-# define BUFF_SIZE 32
+# define BUFF_SIZE 64
 # define NULL_CHECK(x) if (x == NULL) return (NULL)
 # define VOID_NULL_CHECK(x) if (x == NULL) return
 # define MALLOC_CHECK(x) if (x == NULL) return (NULL)
@@ -149,5 +149,6 @@ size_t				ft_putwchar(wchar_t wc);
 void				ft_putwstr_fd(wchar_t *s, const int fd);
 void				ft_putwstr(wchar_t *s);
 int					get_next_line(const int fd, char **line);
+size_t				ft_countwd(char const *s);
 
 #endif

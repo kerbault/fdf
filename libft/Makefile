@@ -6,7 +6,7 @@
 #    By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/04/24 13:57:39 by kerbault     #+#   ##    ##    #+#        #
-#    Updated: 2018/05/03 17:57:04 by kerbault    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/06/19 19:27:55 by kerbault    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -33,6 +33,7 @@ NORM		:= norminette
 INCLUDESDIR	:= includes
 SRCDIR		:= src
 SRCS		:= \
+	ft_countwd.c \
 	ft_atoi.c \
 	ft_lstadd.c \
 	ft_memmove.c \

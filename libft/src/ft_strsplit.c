@@ -6,14 +6,14 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/22 20:44:34 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/24 17:30:03 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/19 21:49:19 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../inc/libft.h"
 
-static size_t	ft_countwd(char const *s, char c)
+static size_t	ft_countwds(char const *s, char c)
 {
 	size_t		nb;
 	size_t		i;
@@ -90,7 +90,7 @@ char			**ft_strsplit(char const *s, char c)
 		return (NULL);
 	i = 0;
 	str = (char *)s;
-	nb = ft_countwd(s, c);
+	nb = ft_countwds(s, c);
 	MALLOC_CHECK((tab = (char **)malloc(sizeof(*tab) * (nb + 1))));
 	while (i < nb)
 	{

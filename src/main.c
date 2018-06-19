@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 15:51:29 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/13 22:53:39 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/19 15:48:26 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -66,6 +66,12 @@ void	opt_def(t_opt *opt, t_size gsize)
 	opt->z_mult = opt->z_rat * opt->mult;
 }
 
+void	loop(t_main main)
+{
+	mlx_hook(main.win, 2, 0, kf, 0);
+	mlx_loop(main.mlx);
+}
+
 int		main(int ac, char **av)
 {
 	t_main	main;
@@ -76,7 +82,10 @@ int		main(int ac, char **av)
 	if (ac != 2)
 		ft_close("usage : ./fdf <map>.fdf", EXIT_FAILURE);
 	main.fd = open(av[1], O_RDONLY);
-	s_map = (t_map *)malloc(sizeof(t_map));
+	if (main.fd == -1 || open(av[1], O_DIRECTORY) != -1)
+		ft_close("usage : ./fdf <map>.fdf", EXIT_FAILURE);
+	if (!(s_map = (t_map *)malloc(sizeof(t_map))))
+		ft_close("Map allocation failed", EXIT_FAILURE);
 	size_map(main.fd, &gsize);
 	main.fd = open(av[1], O_RDONLY);
 	opt_def(&opt, gsize);
@@ -87,7 +96,7 @@ int		main(int ac, char **av)
 	set_img(main.mlx, s_map);
 	set_map(main, s_map, gsize, opt);
 	mlx_put_image_to_window(main.mlx, main.win, s_map->ptr, 0, 0);
-	mlx_hook(main.win, 2, 0, kf, 0);
-	mlx_loop(main.mlx);
+	free(main.map);
+	loop(main);
 	return (0);
 }
