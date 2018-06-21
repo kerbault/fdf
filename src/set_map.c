@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/12 18:14:22 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/13 16:21:48 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/21 17:33:03 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -56,24 +56,24 @@ void	set_seg(t_point pt, t_map *s_map)
 	}
 }
 
-void	set_map(t_main main, t_map *s_map, t_size gsize, t_opt opt)
+void	set_map(t_glob glob, t_map *s_map)
 {
 	int		x;
 	int		y;
 
 	x = -1;
 	y = -1;
-	opt.tmp_tilt = opt.tilt * opt.mult;
-	while (y++ < gsize.width - 1)
+	glob.opt.tmp_tilt = glob.opt.tilt * glob.opt.mult;
+	while (y++ < glob.width - 1)
 	{
-		while (x++ < gsize.length - 1)
+		while (x++ < glob.length - 1)
 		{
-			if (x < W_X && (x + 1) < gsize.length)
-				set_seg(pers_cav_ver(x, y, main.map, opt), s_map);
-			if (y < W_Y && (y + 1) < gsize.width)
-				set_seg(pers_cav_hor(x, y, main.map, opt), s_map);
+			if (x < W_X && (x + 1) < glob.length)
+				set_seg(pers_cav_ver(x, y, glob.map, glob.opt), s_map);
+			if (y < W_Y && (y + 1) < glob.width)
+				set_seg(pers_cav_hor(x, y, glob.map, glob.opt), s_map);
 		}
-		opt.tilt += opt.tmp_tilt;
+		glob.opt.tilt += glob.opt.tmp_tilt;
 		x = -1;
 	}
 }

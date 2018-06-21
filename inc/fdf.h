@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/24 13:15:38 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/19 15:48:25 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/21 17:11:08 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,8 +36,6 @@
 # define DOWN		84
 # define LEFT		86
 # define RIGHT		88
-# define CLOCK		89
-# define CCLOCK		92
 # define CENTER		87
 # define ZOOMIN		69
 # define ZOOMOUT	78
@@ -47,8 +45,8 @@
 ** const definition
 */
 
-# define W_X 1600
-# define W_Y 900
+# define W_X 1000
+# define W_Y 1200
 # define WHITE 0xFFFFFF
 # define BLACK 0x00000
 
@@ -56,13 +54,7 @@
 ** Struct definition
 */
 
-typedef struct	s_main
-{
-	void	*mlx;
-	void	*win;
-	int		fd;
-	int		**map;
-}				t_main;
+
 
 typedef struct	s_point
 {
@@ -114,6 +106,18 @@ typedef struct	s_opt
 	double	z_mult;
 }				t_opt;
 
+typedef struct	s_glob
+{
+	void	*mlx;
+	void	*win;
+	int		fd;
+	int		**map;
+	int		length;
+	int		width;
+	t_opt	opt;
+	t_map	*s_map;
+}				t_glob;
+
 /*
 ** Function definition
 */
@@ -123,10 +127,11 @@ t_point		pers_cav_hor(int x, int y, int **map, t_opt opt);
 t_point		set_point1(int x, int y, int **map);
 t_point		set_point2(int x, int y, int **map);
 void		ft_close(char *msg, int status);
-int			kf(int keycode, void *param);
-void		size_map(int fd, t_size *gsize);
+int			kf(int keycode, t_glob *glob);
+void		size_map(t_glob *glob);
 int			**map_malloc(t_map size);
 int			**read_map(int fd);
-void		set_map(t_main main, t_map *s_map, t_size gsize, t_opt	opt);
+void		set_map(t_glob glob, t_map *s_map);
+void		ft_decrease(t_glob *glob);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/11/22 21:55:44 by kerbault     #+#   ##    ##    #+#        #
-#    Updated: 2018/06/11 21:07:23 by kerbault    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/06/21 16:17:48 by kerbault    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -50,6 +50,7 @@ INCLUDES 	:= \
 SRCDIR		:=	src
 SRCS		:=	\
 	main.c\
+	opt_mod_2.c\
 	pers_cav.c\
 	pers_iso.c\
 	keymap.c\

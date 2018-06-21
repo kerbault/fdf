@@ -6,14 +6,14 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/12 16:45:36 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/19 21:46:04 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/21 17:32:59 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-void	size_map(int fd, t_size *gsize)
+void	size_map(t_glob *glob)
 {
 	char	*line;
 	size_t	tmp1;
@@ -21,11 +21,11 @@ void	size_map(int fd, t_size *gsize)
 	int		bol;
 
 	bol = 0;
-	gsize->width = 0;
-	gsize->length = 0;
-	while (get_next_line(fd, &line) == 1)
+	glob->width = 0;
+	glob->length = 0;
+	while (get_next_line(glob->fd, &line) == 1)
 	{
-		gsize->width++;
+		glob->width++;
 		tmp1 = ft_countwd(line);
 		free(line);
 		if (bol == 0)
@@ -36,8 +36,8 @@ void	size_map(int fd, t_size *gsize)
 		if (tmp1 < tmp2)
 			tmp2 = tmp1;
 	}
-	gsize->length = tmp2;
-	close(fd);
+	glob->length = tmp2;
+	close(glob->fd);
 	free(line);
 }
 

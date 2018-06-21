@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 15:51:29 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/19 15:48:26 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/21 17:35:46 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,66 +37,64 @@ void	set_img(void *mlx, t_map *s_map)
 		ft_close("error : mlx_get_data_addr()", EXIT_FAILURE);
 }
 
-void	opt_def(t_opt *opt, t_size gsize)
+void	opt_def(t_glob *glob)
 {
 	double	i;
 	double	j;
 
 	i = 0;
 	j = 0;
-	opt->x_rat = 3;
-	opt->y_rat = 2;
-	opt->z_rat = 0.5;
-	opt->x_decal = W_X / 2;
-	opt->y_decal = W_Y / 2;
-	opt->tilt = 1;
-	opt->x_med = gsize.length - 1;
-	opt->y_med = gsize.width - 1;
-	if (opt->x_med == 0 || opt->y_med == 0)
+	glob->opt.x_rat = 3;
+	glob->opt.y_rat = 2;
+	glob->opt.z_rat = 0.5;
+	glob->opt.x_decal = W_X / 2;
+	glob->opt.y_decal = W_Y / 2;
+	glob->opt.x_med = glob->length - 1;
+	glob->opt.y_med = glob->width - 1;
+	if (glob->opt.x_med == 0 || glob->opt.y_med == 0)
 		ft_close("Invalid Map", -1);
-	opt->t_med = opt->tilt / opt->x_rat;
-	i = (W_Y - 50) / (opt->y_rat * opt->y_med);
-	j = (W_X - 50) / (opt->x_rat * (opt->x_med + (opt->y_med * opt->t_med)));
+	glob->opt.t_med = glob->opt.tilt / glob->opt.x_rat;
+	i = (W_Y - 50) / (glob->opt.y_rat * glob->opt.y_med);
+	j = (W_X - 50) / (glob->opt.x_rat * (glob->opt.x_med + \
+	(glob->opt.y_med * glob->opt.t_med)));
 	if (i > j)
-		opt->mult = j;
+		glob->opt.mult = j;
 	else
-		opt->mult = i;
-	opt->x_mult = opt->x_rat * opt->mult;
-	opt->y_mult = opt->y_rat * opt->mult;
-	opt->z_mult = opt->z_rat * opt->mult;
+		glob->opt.mult = i;
+	glob->opt.x_mult = glob->opt.x_rat * glob->opt.mult;
+	glob->opt.y_mult = glob->opt.y_rat * glob->opt.mult;
+	glob->opt.z_mult = glob->opt.z_rat * glob->opt.mult;
 }
 
-void	loop(t_main main)
+void	loop(t_glob glob)
 {
-	mlx_hook(main.win, 2, 0, kf, 0);
-	mlx_loop(main.mlx);
+	mlx_hook(glob.win, 2, 0, kf, 0);
+	mlx_loop(glob.mlx);
 }
 
 int		main(int ac, char **av)
 {
-	t_main	main;
-	t_map	*s_map;
-	t_size	gsize;
-	t_opt	opt;
+	t_glob	glob;
 
+	glob.opt.tilt = 1;
 	if (ac != 2)
 		ft_close("usage : ./fdf <map>.fdf", EXIT_FAILURE);
-	main.fd = open(av[1], O_RDONLY);
-	if (main.fd == -1 || open(av[1], O_DIRECTORY) != -1)
+	glob.fd = open(av[1], O_RDONLY);
+	if (glob.fd == -1 || open(av[1], O_DIRECTORY) != -1)
 		ft_close("usage : ./fdf <map>.fdf", EXIT_FAILURE);
-	if (!(s_map = (t_map *)malloc(sizeof(t_map))))
+	if (!(glob.s_map = (t_map *)malloc(sizeof(t_map))))
 		ft_close("Map allocation failed", EXIT_FAILURE);
-	size_map(main.fd, &gsize);
-	main.fd = open(av[1], O_RDONLY);
-	opt_def(&opt, gsize);
-	main.map = read_map(main.fd);
-	close(main.fd);
-	main.mlx = mlx_init();
-	main.win = mlx_new_window(main.mlx, W_X, W_Y, av[1]);
-	set_img(main.mlx, s_map);
-	set_map(main, s_map, gsize, opt);
-	mlx_put_image_to_window(main.mlx, main.win, s_map->ptr, 0, 0);
-	free(main.map);
-	loop(main);
+	size_map(&glob);
+	glob.fd = open(av[1], O_RDONLY);
+	opt_def(&glob);
+	glob.map = read_map(glob.fd);
+	close(glob.fd);
+	glob.mlx = mlx_init();
+	glob.win = mlx_new_window(glob.mlx, W_X, W_Y, av[1]);
+	set_img(glob.mlx, glob.s_map);
+	set_map(glob, glob.s_map);
+	mlx_put_image_to_window(glob.mlx, glob.win, glob.s_map->ptr, 0, 0);
+	free(glob.map);
+	loop(glob);
 	return (0);
 }
