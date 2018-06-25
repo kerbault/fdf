@@ -6,7 +6,7 @@
 #    By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/11/22 21:55:44 by kerbault     #+#   ##    ##    #+#        #
-#    Updated: 2018/06/21 21:13:33 by kerbault    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/06/25 17:42:25 by kerbault    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -53,7 +53,6 @@ SRCS		:=	\
 	opt_mod_1.c\
 	opt_mod_2.c\
 	pers_cav.c\
-	pers_iso.c\
 	keymap.c\
 	set_map.c\
 	read_map.c

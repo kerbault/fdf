@@ -6,12 +6,31 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/12 18:14:22 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/21 21:07:44 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/25 18:52:58 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
+
+int		seg_check(t_point pt)
+{
+	if (pt.x1 == pt.x2 && pt.y1 == pt.y2)
+		return (0);
+	if (pt.x1 < 0)
+		if (pt.x2 < 0)
+			return (0);
+	if (pt.x2 > W_X)
+		if (pt.x1 > W_X)
+			return (0);
+	if (pt.y1 < 0)
+		if (pt.y2 < 0)
+			return (0);
+	if (pt.y2 > W_Y)
+		if (pt.y1 > W_Y)
+			return (0);
+	return (1);
+}
 
 int		set_pixel(t_point pt, t_glob glob)
 {
@@ -39,7 +58,7 @@ void	set_seg(t_point pt, t_glob glob)
 	while (1)
 	{
 		set_pixel(pt, glob);
-		if (pt.x1 == pt.x2 && pt.y1 == pt.y2)
+		if (seg_check(pt) == 0)
 			break ;
 		e2 = err;
 		if (e2 > -pt.dx)
