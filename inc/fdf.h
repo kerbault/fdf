@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/24 13:15:38 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/23 21:56:33 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/25 18:59:50 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,28 +45,26 @@
 ** const definition
 */
 
-# define W_X 1280
-# define W_Y 720
-# define WHITE 0xFFFFFF
-# define BLACK 0x00000
+# define W_X		1280
+# define W_Y		720
+# define WHITE		0xFFFFFF
+# define BLACK		0x00000
 
 /*
 ** Struct definition
 */
 
-
-
 typedef struct	s_point
 {
-	int x1;
-	int y1;
-	int x2;
-	int y2;
-	int dx;
-	int dy;
-	int sx;
-	int sy;
-	int	col;
+	int		x1;
+	int		y1;
+	int		x2;
+	int		y2;
+	int		dx;
+	int		dy;
+	int		sx;
+	int		sy;
+	int		col;
 }				t_point;
 
 typedef struct	s_map
@@ -124,27 +122,27 @@ typedef struct	s_glob
 ** Function definition
 */
 
-t_point		pers_cav_ver(int x, int y, int **map, t_opt opt);
-t_point		pers_cav_hor(int x, int y, int **map, t_opt opt);
-t_point		set_point1(int x, int y, int **map);
-t_point		set_point2(int x, int y, int **map);
-void		ft_close(char *msg, int status);
-int			kf(int keycode, t_glob *glob);
-void		size_map(t_glob *glob);
-int			**map_malloc(t_map size);
-int			**read_map(int fd);
-void		set_map(t_glob glob);
-void		ft_zero(t_glob *glob);
-void		ft_decrease(t_glob *glob);
-void		ft_increase(t_glob *glob);
-void		ft_zoomin(t_glob *glob);
-void		ft_zoomout(t_glob *glob);
-void		ft_center(t_glob *glob);
-void		ft_up(t_glob *glob);
-void		ft_down(t_glob *glob);
-void		ft_left(t_glob *glob);
-void		ft_right(t_glob *glob);
-void		opt_def(t_glob *glob);
-int			red_cross();
+t_point			pers_cav_ver(int x, int y, int **map, t_opt opt);
+t_point			pers_cav_hor(int x, int y, int **map, t_opt opt);
+t_point			set_point1(int x, int y, int **map);
+t_point			set_point2(int x, int y, int **map);
+void			ft_close(char *msg, int status);
+int				kf(int keycode, t_glob *glob);
+void			size_map(t_glob *glob);
+int				**map_malloc(t_map size);
+int				**read_map(int fd);
+void			set_map(t_glob glob);
+void			ft_zero(t_glob *glob);
+void			ft_decrease(t_glob *glob);
+void			ft_increase(t_glob *glob);
+void			ft_zoomin(t_glob *glob);
+void			ft_zoomout(t_glob *glob);
+void			ft_center(t_glob *glob);
+void			ft_up(t_glob *glob);
+void			ft_down(t_glob *glob);
+void			ft_left(t_glob *glob);
+void			ft_right(t_glob *glob);
+void			opt_def(t_glob *glob);
+int				red_cross();
 
 #endif
