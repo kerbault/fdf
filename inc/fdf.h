@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/24 13:15:38 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/21 17:11:08 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/23 21:56:33 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,8 +45,8 @@
 ** const definition
 */
 
-# define W_X 1000
-# define W_Y 1200
+# define W_X 1280
+# define W_Y 720
 # define WHITE 0xFFFFFF
 # define BLACK 0x00000
 
@@ -104,6 +104,7 @@ typedef struct	s_opt
 	double	x_mult;
 	double	y_mult;
 	double	z_mult;
+
 }				t_opt;
 
 typedef struct	s_glob
@@ -114,6 +115,7 @@ typedef struct	s_glob
 	int		**map;
 	int		length;
 	int		width;
+	int		col;
 	t_opt	opt;
 	t_map	*s_map;
 }				t_glob;
@@ -131,7 +133,18 @@ int			kf(int keycode, t_glob *glob);
 void		size_map(t_glob *glob);
 int			**map_malloc(t_map size);
 int			**read_map(int fd);
-void		set_map(t_glob glob, t_map *s_map);
+void		set_map(t_glob glob);
+void		ft_zero(t_glob *glob);
 void		ft_decrease(t_glob *glob);
+void		ft_increase(t_glob *glob);
+void		ft_zoomin(t_glob *glob);
+void		ft_zoomout(t_glob *glob);
+void		ft_center(t_glob *glob);
+void		ft_up(t_glob *glob);
+void		ft_down(t_glob *glob);
+void		ft_left(t_glob *glob);
+void		ft_right(t_glob *glob);
+void		opt_def(t_glob *glob);
+int			red_cross();
 
 #endif

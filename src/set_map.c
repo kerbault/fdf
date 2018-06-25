@@ -6,28 +6,27 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/12 18:14:22 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/21 17:33:03 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/21 21:07:44 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-int		set_pixel(t_point pt, t_map *s_map)
+int		set_pixel(t_point pt, t_glob glob)
 {
 	int	ipixel;
 
 	ipixel = pt.x1 + pt.y1 * W_X;
-	pt.col = 0xFFFFFF;
 	if (pt.x1 >= 0 && pt.x1 < W_X && pt.y1 >= 0 && pt.y1 < W_Y)
 	{
-		s_map->fig[ipixel] = pt.col;
+		glob.s_map->fig[ipixel] = glob.col;
 		return (0);
 	}
 	return (-1);
 }
 
-void	set_seg(t_point pt, t_map *s_map)
+void	set_seg(t_point pt, t_glob glob)
 {
 	int err;
 	int	e2;
@@ -39,7 +38,7 @@ void	set_seg(t_point pt, t_map *s_map)
 	err = (pt.dx > pt.dy ? pt.dx : -pt.dy) / 2;
 	while (1)
 	{
-		set_pixel(pt, s_map);
+		set_pixel(pt, glob);
 		if (pt.x1 == pt.x2 && pt.y1 == pt.y2)
 			break ;
 		e2 = err;
@@ -56,7 +55,7 @@ void	set_seg(t_point pt, t_map *s_map)
 	}
 }
 
-void	set_map(t_glob glob, t_map *s_map)
+void	set_map(t_glob glob)
 {
 	int		x;
 	int		y;
@@ -69,9 +68,9 @@ void	set_map(t_glob glob, t_map *s_map)
 		while (x++ < glob.length - 1)
 		{
 			if (x < W_X && (x + 1) < glob.length)
-				set_seg(pers_cav_ver(x, y, glob.map, glob.opt), s_map);
+				set_seg(pers_cav_ver(x, y, glob.map, glob.opt), glob);
 			if (y < W_Y && (y + 1) < glob.width)
-				set_seg(pers_cav_hor(x, y, glob.map, glob.opt), s_map);
+				set_seg(pers_cav_hor(x, y, glob.map, glob.opt), glob);
 		}
 		glob.opt.tilt += glob.opt.tmp_tilt;
 		x = -1;

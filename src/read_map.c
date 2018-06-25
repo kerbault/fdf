@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/12 16:45:36 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/21 17:32:59 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/23 15:20:37 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -72,7 +72,7 @@ int		**read_map(int fd)
 		map_part = ft_strsplit(line, ' ');
 		free(line);
 		if (!ft_isdigit(map_part[0][0]) && map_part[0][0] != '-')
-			exit(0);
+			ft_close("Invalid map.", EXIT_FAILURE);
 		while (map_part[size.width] != NULL)
 		{
 			map[size.width++][size.length] = ft_atoi(map_part[size.width]);
