@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 15:51:29 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/23 21:56:24 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/25 23:01:05 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,7 +23,7 @@ void	set_img(void *mlx, t_map *s_map)
 		ft_close("error : mlx_get_data_addr()", EXIT_FAILURE);
 }
 
-void	opt_def(t_glob *glob)
+void	opt_def_2(t_glob *glob)
 {
 	double	i;
 	double	j;
@@ -32,7 +32,7 @@ void	opt_def(t_glob *glob)
 	j = 0;
 	glob->opt.x_rat = 3;
 	glob->opt.y_rat = 2;
-	glob->opt.z_rat = 0.5;
+	glob->opt.z_rat = 0.3;
 	glob->opt.x_decal = W_X / 2;
 	glob->opt.y_decal = W_Y / 2;
 	glob->opt.x_med = glob->length - 1;
@@ -52,6 +52,13 @@ void	opt_def(t_glob *glob)
 	glob->opt.z_mult = glob->opt.z_rat;
 }
 
+void	opt_def_1(t_glob *glob)
+{
+	glob->opt.tilt = 1;
+	glob->col = GREEN;
+	glob->opt.i_zoom = 0;
+}
+
 void	loop(t_glob *glob)
 {
 	mlx_hook(glob->win, 17, (1L << 17), red_cross, (t_glob*)glob);
@@ -63,10 +70,9 @@ int		main(int ac, char **av)
 {
 	t_glob	glob;
 
-	glob.opt.tilt = 1;
-	glob.col = WHITE;
 	if (ac != 2)
 		ft_close("usage : ./fdf <map>.fdf", EXIT_FAILURE);
+	opt_def_1(&glob);
 	glob.fd = open(av[1], O_RDONLY);
 	if (glob.fd == -1 || open(av[1], O_DIRECTORY) != -1)
 		ft_close("usage : ./fdf <map>.fdf", EXIT_FAILURE);
@@ -75,7 +81,7 @@ int		main(int ac, char **av)
 		ft_close("Map allocation failed", EXIT_FAILURE);
 	size_map(&glob);
 	glob.fd = open(av[1], O_RDONLY);
-	opt_def(&glob);
+	opt_def_2(&glob);
 	glob.map = read_map(glob.fd);
 	close(glob.fd);
 	glob.mlx = mlx_init();
@@ -83,6 +89,7 @@ int		main(int ac, char **av)
 	set_img(glob.mlx, glob.s_map);
 	set_map(glob);
 	mlx_put_image_to_window(glob.mlx, glob.win, glob.s_map->ptr, 0, 0);
+	fdf_comment(&glob);
 	loop(&glob);
 	return (0);
 }

@@ -6,12 +6,27 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/12 18:14:22 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/25 18:52:58 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/25 23:58:27 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
+
+void	fdf_comment(t_glob *glob)
+{
+	mlx_string_put(glob->mlx, glob->win, 10, 5, WHITE, "< or 4 left");
+	mlx_string_put(glob->mlx, glob->win, 10, 20, WHITE, "> or 6 righ");
+	mlx_string_put(glob->mlx, glob->win, 10, 35, WHITE, "^ or 8 up");
+	mlx_string_put(glob->mlx, glob->win, 10, 50, WHITE, "v or 2 down");
+	mlx_string_put(glob->mlx, glob->win, 10, 65, WHITE, "5 center");
+	mlx_string_put(glob->mlx, glob->win, 10, 80, WHITE, "+ zoomin");
+	mlx_string_put(glob->mlx, glob->win, 10, 95, WHITE, "- zoomout");
+	mlx_string_put(glob->mlx, glob->win, 10, 110, WHITE, "0 reset");
+	mlx_string_put(glob->mlx, glob->win, 10, 125, WHITE, "1 decrease");
+	mlx_string_put(glob->mlx, glob->win, 10, 140, WHITE, "3 increase");
+	mlx_string_put(glob->mlx, glob->win, 10, 155, WHITE, "9 color");
+}
 
 int		seg_check(t_point pt)
 {

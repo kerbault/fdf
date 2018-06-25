@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/12 16:40:59 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/23 21:56:22 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/25 22:45:40 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,5 +49,7 @@ int		kf(int keycode, t_glob *glob)
 		ft_zoomin(glob);
 	else if (keycode == ZOOMOUT)
 		ft_zoomout(glob);
+	else if (keycode == 92)
+		ft_color(glob);
 	return (0);
 }

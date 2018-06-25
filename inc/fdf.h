@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/24 13:15:38 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/25 18:59:50 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/25 23:00:59 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -46,9 +46,11 @@
 */
 
 # define W_X		1280
-# define W_Y		720
+# define W_Y		800
 # define WHITE		0xFFFFFF
-# define BLACK		0x00000
+# define BLEU		0x6D9EE2
+# define GREEN		0x96E26D
+# define RED		0xE26D6D
 
 /*
 ** Struct definition
@@ -102,7 +104,7 @@ typedef struct	s_opt
 	double	x_mult;
 	double	y_mult;
 	double	z_mult;
-
+	int		i_zoom;
 }				t_opt;
 
 typedef struct	s_glob
@@ -137,12 +139,16 @@ void			ft_decrease(t_glob *glob);
 void			ft_increase(t_glob *glob);
 void			ft_zoomin(t_glob *glob);
 void			ft_zoomout(t_glob *glob);
+void			ft_color(t_glob *glob);
+void			ft_ratio(t_glob *glob);
 void			ft_center(t_glob *glob);
 void			ft_up(t_glob *glob);
 void			ft_down(t_glob *glob);
 void			ft_left(t_glob *glob);
 void			ft_right(t_glob *glob);
-void			opt_def(t_glob *glob);
+void			opt_def_1(t_glob *glob);
+void			opt_def_2(t_glob *glob);
+void			fdf_comment(t_glob *glob);
 int				red_cross();
 
 #endif
