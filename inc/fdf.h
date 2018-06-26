@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/24 13:15:38 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/25 23:00:59 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/26 16:30:12 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,8 +45,8 @@
 ** const definition
 */
 
-# define W_X		1280
-# define W_Y		800
+# define W_X		1400
+# define W_Y		900
 # define WHITE		0xFFFFFF
 # define BLEU		0x6D9EE2
 # define GREEN		0x96E26D

@@ -6,7 +6,7 @@
 #    By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/11/22 21:55:44 by kerbault     #+#   ##    ##    #+#        #
-#    Updated: 2018/06/25 21:51:53 by kerbault    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/06/26 17:16:13 by kerbault    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -26,7 +26,7 @@ RM			:= /bin/rm
 RMFLAGS		:= -rf
 ECHO		:= echo -e
 QUIET		:= @
-NORM		:= norminette
+NORM		:= norminette -R CheckForbiddenSourceHeader
 GREEN		:= \033[0;32m
 NC			:= \033[0m
 

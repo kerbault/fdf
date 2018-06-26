@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 15:51:29 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/25 23:01:05 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/26 16:13:01 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,8 +18,7 @@ void	set_img(void *mlx, t_map *s_map)
 	if ((s_map->ptr = mlx_new_image(mlx, W_X, W_Y)) == NULL)
 		ft_close("error : mlx_new_image()", EXIT_FAILURE);
 	if ((s_map->fig = (int *)mlx_get_data_addr(s_map->ptr, &s_map->bpp, \
-		&s_map->sl,
-	&s_map->endian)) == NULL)
+		&s_map->sl, &s_map->endian)) == NULL)
 		ft_close("error : mlx_get_data_addr()", EXIT_FAILURE);
 }
 

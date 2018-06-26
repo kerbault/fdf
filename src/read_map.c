@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/12 16:45:36 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/23 15:20:37 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/26 17:46:55 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -63,25 +63,25 @@ int		**read_map(int fd)
 	char	*line;
 	char	**map_part;
 	int		**map;
-	t_map	size;
+	t_map	s;
 
-	ft_bzero(&size, sizeof(size));
-	map = map_malloc(size);
+	ft_bzero(&s, sizeof(s));
+	map = map_malloc(s);
 	while (get_next_line(fd, &line) == 1)
 	{
 		map_part = ft_strsplit(line, ' ');
 		free(line);
 		if (!ft_isdigit(map_part[0][0]) && map_part[0][0] != '-')
 			ft_close("Invalid map.", EXIT_FAILURE);
-		while (map_part[size.width] != NULL)
+		while (map_part[s.width] != NULL)
 		{
-			map[size.width++][size.length] = ft_atoi(map_part[size.width]);
-			free(map_part[size.width - 1]);
+			map[s.width++][s.length] = ft_atoi(map_part[s.width]) % 50000;
+			free(map_part[s.width - 1]);
 		}
-		free(map_part[size.width]);
+		free(map_part[s.width]);
 		free(map_part);
-		size.length++;
-		size.width = 0;
+		s.length++;
+		s.width = 0;
 	}
 	free(line);
 	return (map);
