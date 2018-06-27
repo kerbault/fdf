@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 15:51:29 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/26 16:13:01 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/27 17:21:06 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,40 +22,17 @@ void	set_img(void *mlx, t_map *s_map)
 		ft_close("error : mlx_get_data_addr()", EXIT_FAILURE);
 }
 
-void	opt_def_2(t_glob *glob)
+void	ft_close(char *msg, int status)
 {
-	double	i;
-	double	j;
-
-	i = 0;
-	j = 0;
-	glob->opt.x_rat = 3;
-	glob->opt.y_rat = 2;
-	glob->opt.z_rat = 0.3;
-	glob->opt.x_decal = W_X / 2;
-	glob->opt.y_decal = W_Y / 2;
-	glob->opt.x_med = glob->length - 1;
-	glob->opt.y_med = glob->width - 1;
-	if (glob->opt.x_med == 0 || glob->opt.y_med == 0)
-		ft_close("Invalid Map", -1);
-	glob->opt.t_med = glob->opt.tilt / glob->opt.x_rat;
-	i = (W_Y - 50) / (glob->opt.y_rat * glob->opt.y_med);
-	j = (W_X - 50) / (glob->opt.x_rat * (glob->opt.x_med + \
-	(glob->opt.y_med * glob->opt.t_med)));
-	if (i > j)
-		glob->opt.mult = j;
-	else
-		glob->opt.mult = i;
-	glob->opt.x_mult = glob->opt.x_rat;
-	glob->opt.y_mult = glob->opt.y_rat;
-	glob->opt.z_mult = glob->opt.z_rat;
+	ft_putendl(msg);
+	exit(status);
 }
 
-void	opt_def_1(t_glob *glob)
+void	ft_show(t_glob glob)
 {
-	glob->opt.tilt = 1;
-	glob->col = GREEN;
-	glob->opt.i_zoom = 0;
+	set_map(glob);
+	mlx_put_image_to_window(glob.mlx, glob.win, glob.s_map->ptr, 0, 0);
+	fdf_comment(&glob);
 }
 
 void	loop(t_glob *glob)
@@ -83,12 +60,12 @@ int		main(int ac, char **av)
 	opt_def_2(&glob);
 	glob.map = read_map(glob.fd);
 	close(glob.fd);
-	glob.mlx = mlx_init();
-	glob.win = mlx_new_window(glob.mlx, W_X, W_Y, av[1]);
+	if ((glob.mlx = mlx_init()) == NULL)
+		ft_close("mlx_init failed.", EXIT_FAILURE);
+	if ((glob.win = mlx_new_window(glob.mlx, W_X, W_Y, av[1])) == NULL)
+		ft_close("mlx_new_window failed.", EXIT_FAILURE);
 	set_img(glob.mlx, glob.s_map);
-	set_map(glob);
-	mlx_put_image_to_window(glob.mlx, glob.win, glob.s_map->ptr, 0, 0);
-	fdf_comment(&glob);
+	ft_show(glob);
 	loop(&glob);
 	return (0);
 }

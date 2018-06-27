@@ -6,18 +6,12 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/12 16:40:59 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/25 22:45:40 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/27 17:09:15 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-
-void	ft_close(char *msg, int status)
-{
-	ft_putendl(msg);
-	exit(status);
-}
 
 int		red_cross(void)
 {

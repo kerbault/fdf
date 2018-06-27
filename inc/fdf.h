@@ -6,7 +6,7 @@
 /*   By: kerbault <kerbault@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/24 13:15:38 by kerbault     #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/26 16:30:12 by kerbault    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/27 17:15:42 by kerbault    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,6 @@
 
 # include <stdlib.h>
 # include <math.h>
-# include <stdio.h>
 # include <unistd.h>
 # include "../libft/inc/libft.h"
 # include "../minilibx_macos/mlx.h"
@@ -149,6 +148,7 @@ void			ft_right(t_glob *glob);
 void			opt_def_1(t_glob *glob);
 void			opt_def_2(t_glob *glob);
 void			fdf_comment(t_glob *glob);
+void			ft_show(t_glob glob);
 int				red_cross();
 
 #endif
